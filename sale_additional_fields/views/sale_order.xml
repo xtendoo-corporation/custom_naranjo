@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 Xtendoo S.L.U. - Darío Cruz Mauro
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <record id="sale_additional_fields.view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="sale_order_template_id" position="after">
+                <field name="supplier_id" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"/>
+                <field name="license"/>
+                <field name="ip_number"/>
+                <field name="is_purchase_order_created" invisible="True"/>
+            </field>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-warning mb-0" role="alert"
+                     attrs="{'invisible': ['|',('state', '!=', 'draft'),('is_purchase_order_created', '=', False)]}">
+                    Este pedido ya ha generado un <b>pedido de compra.</b>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

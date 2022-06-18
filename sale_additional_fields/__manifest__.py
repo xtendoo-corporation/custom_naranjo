@@ -1,15 +1,11 @@
 # Copyright 2022 Xtendoo
 
 {
-    "name": "Purchase sale automated",
+    "name": "Sale Additional Fields",
     "summary": """
-        Purchase sale automated""",
+        Sale Additional Fields""",
     "version": "15.0",
-    "depends": [
-        "base",
-        "sale",
-        "purchase",
-    ],
+    "depends": ["sale_management"],
     "maintainers": ["dariocruzmauro"],
     "author": "Xtendoo",
     "license": "AGPL-3",

@@ -19,6 +19,10 @@
                     Este pedido ya ha generado un <b>pedido de compra.</b>
                 </div>
             </xpath>
+            <field name="date_order" position="after">
+                <field name="upload_date"/>
+                <field name="download_date"/>
+            </field>
         </field>
     </record>
 </odoo>

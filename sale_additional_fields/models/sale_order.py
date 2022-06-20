@@ -21,6 +21,16 @@ class SaleOrder(models.Model):
         required=False,
         allow_none=False,
     )
+    upload_date = fields.Date(
+        string="Fecha de carga",
+        required=False,
+        allow_none=False,
+    )
+    download_date = fields.Date(
+        string="Fecha de descarga",
+        required=False,
+        allow_none=False,
+    )
     is_purchase_order_created = fields.Boolean(
         compute= "_compute_purchase_order_created",
         store=True,
@@ -60,6 +70,10 @@ class SaleOrder(models.Model):
             "origin": order.name,
             "payment_term_id": order.payment_term_id.id,
             "date_order": date_order,
+            "license" : order.license,
+            "ip_number": order.ip_number,
+            "upload_date": order.upload_date,
+            "download_date": order.download_date
         }
 
     def _purchase_prepare_line_order_values(self, purchase_order, line):

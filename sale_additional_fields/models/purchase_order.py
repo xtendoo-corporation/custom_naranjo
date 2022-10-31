@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import datetime
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
@@ -22,9 +22,9 @@ class PurchaseOrder(models.Model):
         required=False,
         allow_none=False,
     )
-    licence_id = fields.Many2one(
-        comodel_name="licence",
-        string="Licence",
-        required=False,
-    )
+    # licence_id = fields.Many2one(
+    #     comodel_name="licence",
+    #     string="Licence",
+    #     required=False,
+    # )
 

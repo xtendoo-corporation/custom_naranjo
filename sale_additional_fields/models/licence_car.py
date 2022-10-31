@@ -1,20 +1,19 @@
 # Copyright 2022 - Dario Cruz https://xtendoo.es/
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-import datetime
+from odoo import _, api, fields, models
 
-from odoo import api, fields, models
 
-class Licence(models.Model):
-    _name = "licence"
-    _description = "Licence"
+class LicenceCar(models.Model):
+    _name = "licence.car"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
+    _description = "Licence Car"
 
     name = fields.Char(
-        string="Licence",
+        string="Licence car",
         required=True,
         index=True,
         tracking=True,
     )
-
     date_expiration = fields.Date(
         string='expiration date',
         required=True,

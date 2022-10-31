@@ -12,8 +12,11 @@
     "data": [
         "security/ir.model.access.csv",
         "views/sale_order.xml",
-        "views/purchase_order_views.xml"
+        "views/purchase_order_views.xml",
+        "views/res_partner_view.xml",
+        "views/licence_car_view.xml",
             ],
+    "application": True,
     "installable": True,
     "auto_install": True,
 }

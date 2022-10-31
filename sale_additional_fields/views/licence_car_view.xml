@@ -1,0 +1,55 @@
+<!-- Copyright 2022 Darío Cruz
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).-->
+<odoo>
+
+    <record id="licence_car_form" model="ir.ui.view">
+        <field name="name">licence.car.form</field>
+        <field name="model">licence.car</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_expiration"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="licence_car_view_tree" model="ir.ui.view">
+        <field name="name">licence.car.view.tree</field>
+        <field name="model">licence.car</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date_expiration"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="licence_car_action"
+            model="ir.actions.act_window">
+        <field name="name">Licence</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">licence.car</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id"
+               ref="licence_car_view_tree"/>
+    </record>
+
+    <menuitem
+        id="licence_car_menu"
+        name="Licences"
+        parent="contacts.res_partner_menu_config"
+        action="licence_car_action"
+    />
+
+</odoo>

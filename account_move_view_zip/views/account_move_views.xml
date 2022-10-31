@@ -5,8 +5,8 @@
             <field name="model">account.move</field>
             <field name="inherit_id" ref="account.view_invoice_tree"/>
             <field name="arch" type="xml">
-                <field name="invoice_partner_display_name" position="after">
-                    <field name="invoice_partner_zip" optional="hide"/>
+                <field name="invoice_partner_display_name" position="before">
+                    <field name="partner_id_vat" optional="hide"/>
                 </field>
             </field>
         </record>

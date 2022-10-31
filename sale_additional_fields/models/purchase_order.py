@@ -7,11 +7,6 @@ from odoo import api, fields, models
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
-    license = fields.Char(
-        string="Matrícula",
-        required=False,
-        allow_none=False,
-    )
     ip_number = fields.Char(
         string="Nº IP",
         required=False,
@@ -27,3 +22,9 @@ class PurchaseOrder(models.Model):
         required=False,
         allow_none=False,
     )
+    licence_id = fields.Many2one(
+        comodel_name="licence",
+        string="Licence",
+        required=False,
+    )
+

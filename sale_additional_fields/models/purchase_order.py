@@ -22,9 +22,8 @@ class PurchaseOrder(models.Model):
         required=False,
         allow_none=False,
     )
-    # licence_id = fields.Many2one(
-    #     comodel_name="licence",
-    #     string="Licence",
-    #     required=False,
-    # )
-
+    licence_car_id = fields.Many2one(
+        comodel_name="licence.car",
+        string="Licence",
+        required=False,
+    )

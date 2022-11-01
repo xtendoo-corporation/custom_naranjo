@@ -12,11 +12,11 @@ class SaleOrder(models.Model):
         comodel_name="res.partner",
         string="Proveedor",
     )
-    # licence_id = fields.Many2one(
-    #     comodel_name="licence",
-    #     string="Licence",
-    #     required=False,
-    # )
+    licence_car_id = fields.Many2one(
+        comodel_name="licence.car",
+        string="Licence",
+        required=False,
+    )
     ip_number = fields.Char(
         string="Nº IP",
         required=False,

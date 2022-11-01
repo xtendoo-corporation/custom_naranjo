@@ -9,7 +9,8 @@
         <field name="arch" type="xml">
             <field name="sale_order_template_id" position="after">
                 <field name="supplier_id" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"/>
-<!--                <field name="licence_id"/>-->
+                <field name="licence_car_id" />
+<!--                       domain="[('licence.car.partner_id', '=', sale.order.partner_id)]" />-->
                 <field name="ip_number"/>
                 <field name="is_purchase_order_created" invisible="True"/>
             </field>

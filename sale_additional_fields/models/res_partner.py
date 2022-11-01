@@ -6,7 +6,7 @@ from odoo import fields, models
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    licence_car_ids = fields.Many2one(
+    licence_car_ids = fields.Many2many(
         comodel_name="licence.car",
         inverse_name='partner_id',
         string="Licence",

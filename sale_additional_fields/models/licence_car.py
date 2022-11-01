@@ -15,6 +15,10 @@ class LicenceCar(models.Model):
         tracking=True,
     )
     date_expiration = fields.Date(
-        string='expiration date',
+        string='Expiration date',
         required=True,
+    )
+    partner_id = fields.Many2one(
+        comodel_name="res.partner",
+        string="Partner",
     )

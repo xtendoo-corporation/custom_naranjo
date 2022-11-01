@@ -6,11 +6,11 @@ from odoo import _, api, fields, models
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    partner_id_vat = fields.Char(related='partner_id.vat', string='VAT No')
+    # partner_id_vat = fields.Char(related='partner_id.vat', string='VAT No')
 
-    # partner_zip = fields.Many2one(
-    #     comodel_name='res.partner',
-    #     string='zip',
-    #     related='partner_id.zip',
-    #     readonly=True,
-    # )
+    partner_zip = fields.Char(
+        comodel_name='res.partner',
+        string='zip',
+        related='partner_id.zip',
+        readonly=True,
+    )

@@ -8,7 +8,7 @@
             <xpath expr="//page[@name='internal_notes']" position="after">
                 <page name="licences" string="Licences">
                     <field name="licence_car_ids">
-                        <tree editable="bottom">
+                        <tree editable="bottom" delete="false">
                             <field name="name"/>
                             <field name="date_expiration"/>
                         </tree>

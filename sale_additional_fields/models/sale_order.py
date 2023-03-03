@@ -71,7 +71,7 @@ class SaleOrder(models.Model):
             "origin": order.name,
             "payment_term_id": order.payment_term_id.id,
             "date_order": date_order,
-            "license" : order.license,
+            "licence_car_id" : order.licence_car_id.id,
             "ip_number": order.ip_number,
             "upload_date": order.upload_date,
             "download_date": order.download_date

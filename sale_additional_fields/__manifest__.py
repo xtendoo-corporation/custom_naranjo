@@ -5,7 +5,11 @@
     "summary": """
         Sale Additional Fields""",
     "version": "15.0",
-    "depends": ["sale_management", "purchase"],
+    "depends": [
+        "sale_management",
+        "contacts",
+        "purchase",
+    ],
     "maintainers": ["dariocruzmauro"],
     "author": "Xtendoo",
     "license": "AGPL-3",
@@ -15,7 +19,7 @@
         "views/purchase_order_views.xml",
         "views/res_partner_view.xml",
         "views/licence_car_view.xml",
-            ],
+    ],
     "application": True,
     "installable": True,
     "auto_install": True,

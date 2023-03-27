@@ -7,7 +7,10 @@ from odoo import _, api, fields, models
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
-    ip_number = fields.Char(string='Nº IP', compute="_compute_ip_number")
+    ip_number = fields.Char(
+        string='IP number',
+        compute="_compute_ip_number",
+    )
 
     @api.depends("order_id.ip_number")
     def _compute_ip_number(self):

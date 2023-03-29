@@ -35,6 +35,12 @@
             <xpath expr="//field[@name='date_order']" position="after">
                 <field name="ip_number" optional="hide"/>
             </xpath>
+            <xpath expr="//field[@name='ip_number']" position="after">
+                <field name="upload_date" invisible="0"/>
+            </xpath>
+            <xpath expr="//field[@name='upload_date']" position="after">
+                <field name="download_date" invisible="0"/>
+            </xpath>
         </field>
     </record>
 
@@ -45,6 +51,12 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='create_date']" position="after">
                 <field name="ip_number" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='ip_number']" position="after">
+                <field name="upload_date" invisible="0"/>
+            </xpath>
+            <xpath expr="//field[@name='upload_date']" position="after">
+                <field name="download_date" invisible="0"/>
             </xpath>
         </field>
     </record>
@@ -65,13 +77,52 @@
     <record id="sale_order_view_form" model="ir.ui.view">
         <field name="name">sale.order.form.inherit.ip.number.sale</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='order_line']//form//field[@name='product_id']" position="after">
                 <field name="ip_number"/>
             </xpath>
             <xpath expr="//field[@name='order_line']//tree//field[@name='product_id']" position="after">
-                <field name="ip_number" optional="hide" />
+                <field name="ip_number" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="account_move_view_form" model="ir.ui.view">
+        <field name="name">account.move.view.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']//form//field[@name='name']" position="after">
+                <field name="ip_number"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='name']" position="after">
+                <field name="ip_number" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="my_sales_order_view_extend">
+        <field name="name">Sales Order View Extend</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                <separator/>
+                <filter string="IP Number" name="ip_number" domain="[('ip_number','!=',False)]"/>
+                <filter string="Download Date" name="download_date" date="download_date"/>
+                <filter string="Upload Date" name="upload_date" date="upload_date"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="sale_order_search_inherit_sale">
+        <field name="name">Sale Order Search Inherit Sale</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="ip_number" string="IP Number"/>
             </xpath>
         </field>
     </record>

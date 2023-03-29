@@ -1,4 +1,4 @@
-# Copyright 2022 - Dario Cruz https://xtendoo.es/
+# Copyright 2023 - Jaime Millan https://xtendoo.es/
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import datetime
 
@@ -33,9 +33,31 @@ class SaleOrder(models.Model):
         allow_none=False,
     )
     is_purchase_order_created = fields.Boolean(
-        compute= "_compute_purchase_order_created",
+        compute="_compute_purchase_order_created",
         store=True,
     )
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        ip_number = False
+        for arg in args:
+            if arg[0] == 'ip_number' and arg[1] == '=':
+                ip_number = arg[2]
+                args.remove(arg)
+        res = super(SaleOrder, self).search(args, offset=offset, limit=limit, order=order, count=count)
+        if ip_number:
+            domain = [('ip_number', 'ilike', ip_number)]
+            search_res = super(SaleOrder, self).search(domain)
+            if search_res:
+                res &= search_res
+        return res
+
+    def _prepare_invoice(self):
+        res = super(SaleOrder, self)._prepare_invoice()
+        res.update({
+            'ip_number': self.ip_number,
+        })
+        return res
 
     @api.depends("state")
     def _compute_purchase_order_created(self):
@@ -71,7 +93,7 @@ class SaleOrder(models.Model):
             "origin": order.name,
             "payment_term_id": order.payment_term_id.id,
             "date_order": date_order,
-            "licence_car_id" : order.licence_car_id.id,
+            "licence_car_id": order.licence_car_id.id,
             "ip_number": order.ip_number,
             "upload_date": order.upload_date,
             "download_date": order.download_date

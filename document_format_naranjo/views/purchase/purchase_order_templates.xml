@@ -1,0 +1,13 @@
+
+<odoo>
+    <data>
+        <template
+            id="invisible_warehouse_custom_report_purchaseorder_document"
+            inherit_id="purchase_stock.report_purchaseorder_document">
+            <xpath
+                expr="//span[@t-field='o.picking_type_id.warehouse_id.name']"
+                position="replace">
+            </xpath>
+        </template>
+    </data>
+</odoo>

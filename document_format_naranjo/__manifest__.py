@@ -14,6 +14,7 @@
     ],
     "data": [
         "views/invoice/report_invoice_document.xml",
+        "views/purchase/purchase_order_templates.xml",
     ],
     "installable": True,
     "auto_install": False,

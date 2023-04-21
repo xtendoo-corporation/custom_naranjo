@@ -32,6 +32,91 @@
                     <span t-field="o.upload_date"></span>
                 </td>
             </xpath>
+            <xpath
+                expr="//div[@id='total']"
+                position="after"
+            >
+                <br/>
+                <p style="font-size: 12px">
+                    NECESITAMOS QUE POR SU PARTE NOS REMITAN DE FORMA OBLIGATORIA:
+
+                    *R.D1576/2006: CERTIFICADO ACREDITANDO QUE SE ENCUENTRAN EN ESTIMACIÓN
+
+                    DIRECTA. EN CASO CONTRARIO, PROCEDEMOS A RETENER EL 1€ DE LA BASE.
+
+                    OBLIGACIONES TRIBUTARIAS, DE FORMA CONTRARIA SE LES TENDRÁ QUE RETENER EL PAGO
+
+                    HASTA SU RECEPCIÓN.
+
+                    Se prohíbe expresamente subcontratar ese transporte, así como el transbordo y/o
+
+                    manipulación de la mercancía salvo autorización expresa.
+
+                    El vehículo contratado y su conductor, deben obligatoriamente estar provistos de
+
+                    documentación y permisos exigidos por la ley para la realización del transporte, así como la
+
+                    póliza de seguros que cubra la responsabilidad del porteador frente a la mercancía
+
+                    transportada.
+
+                    El conductor debe llevar chaleco reflectante, guantes de material y calzado de seguridad y ha
+
+                    de respetar en todo momento las normas e instrucciones de seguridad laboral en los lugares
+
+                    de carga y descarga.
+
+                    El camión debe disponer de los medios adecuados (cintas, carracas, barra trasera de sujeción
+
+                    de la carga, cantoneras, etc.) para asegurar la mercancía, siendo su aseguramiento y
+
+                    protección responsabilidad del conductor de la empresa porteadora.
+
+                    Se comunicará de inmediato al teléfono que figura en el encabezado, cualquier incidencia
+
+                    que se produzca durante el trayecto, carga o descarga y especialmente las observaciones y/o
+
+                    reclamaciones que el consignatario de la mercancía haga a la recepción de la misma,
+
+                    esperando en todo caso las instrucciones a seguir.
+
+                    Incluye carga/descarga si la hubiese.
+
+                    Forma de pago: Transferencia a 60 días de recepción de la factura.
+
+                    La aceptación de la carga supone la aceptación de las condiciones y demás cláusulas que se
+
+                    incluyen en este contrato.
+
+                    Queda expresamente acordada la neutralidad hacia nuestro cliente.
+
+                    Las partes se someten, para la solución de cualquier controversia relativa a la interpretación y
+
+                    ejecución del contrato de transporte que se refiere el presente documento, a la Junta Arbitral
+
+                    de Transporte de Sevilla.
+
+                    Los datos de clientes o transportistas incluidos en el presente documento están amparados
+
+                    por la Ley de Protección de Datos LOPD 15/1999, por lo que su uso queda restringido
+
+                    exclusivamente a documentar la información requerida para la carga y descarga de mercancías
+
+                    objeto de esta comunicación. Cualquier otro uso distinto al especificado, sin autorización
+
+                    previa de los interesados será considerado como ilegítimo y quedará sujetos a las leyes
+
+                    vigentes.
+
+                    ENVÍEN ALBARÁN POR MAIL O FAX AL DÍA SIGUIENTE DE LA DESCARGA EN PDF COLOR Y A
+
+                    LA DIRECCIÓN DEL ENCABEZADO LO ANTES POSIBLE. NECESITAMOS HORA DE LLEGADA AL
+
+                    CLIENTE, CUANDO SE ENTREGA LA DOCUMENTACIÓN PARA LA DESCARGA, ES URGENTE E
+
+                    IMPRESCINDIBLE PASAR LA HORA AL DÍA SIGUIENTE.
+                </p>
+            </xpath>
         </template>
     </data>
 </odoo>

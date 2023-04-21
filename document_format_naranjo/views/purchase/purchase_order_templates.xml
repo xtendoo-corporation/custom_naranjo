@@ -1,12 +1,36 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
         <template
-            id="invisible_warehouse_custom_report_purchaseorder_document"
+            id="custom_naranjo_report_purchaseorder_document"
             inherit_id="purchase_stock.report_purchaseorder_document">
             <xpath
                 expr="//span[@t-field='o.picking_type_id.warehouse_id.name']"
                 position="replace">
+            </xpath>
+        </template>
+        <template
+            id="custom_naranjo_report_purchaseorder_document_table"
+            inherit_id="purchase.report_purchaseorder_document">
+            <xpath
+                expr="//th[@name='th_price_unit']"
+                position="after">
+                <th name="download_date" class="text-center">
+                    <strong>Download date</strong>
+                </th>
+                <th name="upload_date" class="text-center">
+                    <strong>Upload date</strong>
+                </th>
+            </xpath>
+            <xpath
+                expr="//div[@class='page']/table/tbody/t[@t-foreach='o.order_line']/tr/t[@t-if='not line.display_type']/td[5]"
+                position="after">
+                <td>
+                    <span t-field="o.download_date"></span>
+                </td>
+                <td>
+                    <span t-field="o.upload_date"></span>
+                </td>
             </xpath>
         </template>
     </data>

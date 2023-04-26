@@ -16,10 +16,10 @@
                 expr="//th[@name='th_price_unit']"
                 position="after">
                 <th name="download_date" class="text-center">
-                    <strong>Download date</strong>
+                    <strong>Fecha de descarga</strong>
                 </th>
                 <th name="upload_date" class="text-center">
-                    <strong>Upload date</strong>
+                    <strong>Fecha de carga</strong>
                 </th>
             </xpath>
             <xpath

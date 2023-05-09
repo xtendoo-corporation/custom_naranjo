@@ -52,12 +52,12 @@ class SaleOrder(models.Model):
                 res &= search_res
         return res
 
-    def _prepare_invoice(self):
-        res = super(SaleOrder, self)._prepare_invoice()
-        res.update({
-            'ip_number': self.ip_number,
-        })
-        return res
+    # def _prepare_invoice(self):
+    #     res = super(SaleOrder, self)._prepare_invoice()
+    #     res.update({
+    #         'ip_number': self.ip_number,
+    #     })
+    #     return res
 
     @api.depends("state")
     def _compute_purchase_order_created(self):

@@ -88,20 +88,6 @@
         </field>
     </record>
 
-    <record id="account_move_view_form" model="ir.ui.view">
-        <field name="name">account.move.view.form</field>
-        <field name="model">account.move</field>
-        <field name="inherit_id" ref="account.view_move_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='invoice_line_ids']//form//field[@name='name']" position="after">
-                <field name="ip_number"/>
-            </xpath>
-            <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='name']" position="after">
-                <field name="ip_number" optional="hide"/>
-            </xpath>
-        </field>
-    </record>
-
     <record model="ir.ui.view" id="my_sales_order_view_extend">
         <field name="name">Sales Order View Extend</field>
         <field name="model">sale.order</field>

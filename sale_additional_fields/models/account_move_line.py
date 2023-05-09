@@ -11,8 +11,17 @@ class AccountMoveLine(models.Model):
     def _compute_ip_number(self):
         self.ip_number = ""
         for line in self.filtered("sale_line_ids"):
+            print("*"*80)
+            print("line", line)
+            print("*"*80)
             for sale_line in line.sale_line_ids:
+                print("*" * 80)
+                print("sale_line", sale_line)
+                print("*" * 80)
                 if sale_line.ip_number:
+                    print("*" * 80)
+                    print("sale_line.ip_number", sale_line.ip_number)
+                    print("*" * 80)
                     line.ip_number = sale_line.ip_number
 
     ip_number = fields.Char(

@@ -5,13 +5,13 @@
             id="document_format_naranjo.report_invoice_document_naranjo"
             inherit_id="account.report_invoice_document"
         >
-<!--            <xpath expr="//div[@id='informations']/div[@name='origin']" position="replace"/>-->
-<!--            <xpath expr="//th[@name='th_quantity']"-->
-<!--                position="after">-->
-<!--                <th name="ip_number" class="text-center">-->
-<!--                    <strong>Numero IP</strong>-->
-<!--                </th>-->
-<!--            </xpath>-->
+            <xpath expr="//div[@id='informations']/div[@name='origin']" position="replace"/>
+            <xpath expr="//th[@name='th_quantity']"
+                position="after">
+                <th name="ip_number" class="text-center">
+                    <strong>Numero IP</strong>
+                </th>
+            </xpath>
             <xpath
                 expr="//div[@class='page']/table/tbody/t[@t-foreach='lines']/tr/t[@t-if='not line.display_type']/td/span[@t-field='line.quantity']"
                 position="after">

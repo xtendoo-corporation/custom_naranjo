@@ -16,7 +16,7 @@
                 expr="//div[@class='page']/table/tbody/t[@t-foreach='lines']/tr/t[@t-if='not line.display_type']/td/span[@t-field='line.quantity']"
                 position="after">
                 <td class="text-center">
-                    <span t-field="o.ip_number"></span>
+                    <span t-field="line.ip_number"></span>
                 </td>
             </xpath>
         </template>

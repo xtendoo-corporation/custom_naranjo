@@ -10,10 +10,15 @@ class AccountMoveLine(models.Model):
 
     def _compute_ip_number(self):
         self.ip_number = ""
-        for line in self.filtered("sale_line_ids"):
-            for sale_line in line.sale_line_ids:
-                if sale_line.ip_number:
-                    line.ip_number = sale_line.ip_number
+        if self.move_id.type == "out_invoice":
+            for line in self.filtered("sale_line_ids"):
+                for sale_line in line.sale_line_ids:
+                    if sale_line.ip_number:
+                        line.ip_number = sale_line.ip_number
+
+        elif self.move_id.type == "in_invoice":
+            for line in self.filtered("purchase_order_id"):
+               line.ip_number = line.order_id.ip_number
 
     ip_number = fields.Char(
         string='IP number',

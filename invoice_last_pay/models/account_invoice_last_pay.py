@@ -5,27 +5,34 @@ import datetime
 from odoo import fields, models, api
 
 
-class InvoiceLastPay(models.Model):
+class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    # payment_id many2one para referencia de pagos
-    # payment_date
     last_pay_date = fields.Date(
         string="Last date pay",
-        compute="_last_pay_date",
+        compute="_compute_last_pay_date",
     )
 
-    def _last_pay_date(self):
-        # for line in self:
-            print("*"*80)
-            id_line = self.line_ids.move_id
-            print("*" * 80)
-            print(id_line)
-            for line in id_line:
-                print("*" * 80)
-                print(line)
-                last_pay = line.payment_id.date
-                print("*" * 80)
-                print(last_pay)
-                self.last_pay_date = last_pay
-
+    @api.depends(
+        'line_ids.matched_debit_ids.debit_move_id.move_id.payment_id.is_matched',
+        'line_ids.matched_debit_ids.debit_move_id.move_id.line_ids.amount_residual',
+        'line_ids.matched_debit_ids.debit_move_id.move_id.line_ids.amount_residual_currency',
+        'line_ids.matched_credit_ids.credit_move_id.move_id.payment_id.is_matched',
+        'line_ids.matched_credit_ids.credit_move_id.move_id.line_ids.amount_residual',
+        'line_ids.matched_credit_ids.credit_move_id.move_id.line_ids.amount_residual_currency',
+        'line_ids.debit',
+        'line_ids.credit',
+        'line_ids.currency_id',
+        'line_ids.amount_currency',
+        'line_ids.amount_residual',
+        'line_ids.amount_residual_currency',
+        'line_ids.payment_id.state',
+        'line_ids.full_reconcile_id')
+    def _compute_last_pay_date(self):
+        for record in self:
+            last_pay_date = None
+            for line in record.line_ids:
+                if line.payment_id.is_matched:
+                    if not last_pay_date or line.payment_id.payment_date > last_pay_date:
+                        last_pay_date = line.payment_id.payment_date
+            record.last_pay_date = last_pay_date

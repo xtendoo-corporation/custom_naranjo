@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="invoice_last_pay_view_tree" model="ir.ui.view">
+        <field name="name">account.invoice.tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="last_pay_date"/>
+            </xpath>
+        </field>
+    </record>
+
+    </odoo>

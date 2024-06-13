@@ -11,4 +11,5 @@ class ResPartner(models.Model):
         inverse_name='partner_id',
         string="Licence",
         required=False,
+        domain="[('partner_id', '=', id)]",
     )

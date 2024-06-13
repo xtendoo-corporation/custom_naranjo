@@ -1,7 +1,6 @@
 <!-- Copyright 2022 Darío Cruz
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).-->
 <odoo>
-
     <record id="licence_car_form" model="ir.ui.view">
         <field name="name">licence.car.form</field>
         <field name="model">licence.car</field>
@@ -10,7 +9,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="partner_id"/>
+                            <field name="partner_id" force_save="1" attrs="{'readonly': True}"/>
                             <field name="name"/>
                             <field name="date_expiration"/>
                         </group>
@@ -33,6 +32,7 @@
                 <field name="partner_id"/>
                 <field name="name"/>
                 <field name="date_expiration"/>
+                <field name="active"/>
             </tree>
         </field>
     </record>
@@ -53,5 +53,17 @@
         parent="contacts.res_partner_menu_config"
         action="licence_car_action"
     />
+
+    <record id="licence_car_view_search" model="ir.ui.view">
+        <field name="name">licence.car.view.search</field>
+        <field name="model">licence.car</field>
+        <field name="arch" type="xml">
+            <search string="Licence Car">
+                <filter string="No Archivadas" name="no_archivadas" domain="[('active','=',True)]"/>
+                <filter string="Archivadas" name="archivadas" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
 
 </odoo>

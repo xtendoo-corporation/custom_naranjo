@@ -36,6 +36,7 @@ class SaleOrder(models.Model):
         compute="_compute_purchase_order_created",
         store=True,
     )
+    supplier_id_int = fields.Integer(string='Supplier ID', compute='_compute_supplier_id_int')
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
@@ -121,3 +122,8 @@ class SaleOrder(models.Model):
             "order_id": purchase_order.id,
             "sale_line_id": line.id,
         }
+
+    @api.depends('supplier_id')
+    def _compute_supplier_id_int(self):
+        for record in self:
+            record.supplier_id_int = record.supplier_id.id

@@ -7,7 +7,7 @@
         >
             <xpath expr="//div[@id='informations']/div[@name='origin']" position="replace"/>
             <xpath expr="//th[@name='th_quantity']"
-                position="after">
+                   position="after">
                 <th name="ip_number" class="text-center">
                     <strong>Numero IP</strong>
                 </th>
@@ -18,6 +18,12 @@
                 <td class="text-center">
                     <span t-field="line.ip_number"></span>
                 </td>
+            </xpath>
+            <xpath expr="//div[@class='clearfix']" position="after">
+                <t t-if="o.move_type == 'out_invoice'">
+                    <strong>Cuenta bancaria:</strong>
+                    <span>ES50 0128 0702 6601 0003 8906</span>
+                </t>
             </xpath>
         </template>
     </data>

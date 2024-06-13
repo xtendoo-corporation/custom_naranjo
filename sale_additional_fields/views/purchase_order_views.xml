@@ -15,4 +15,18 @@
             </field>
         </field>
     </record>
+
+    <record id="view_purchase_order_filter_inherit_ip_number" model="ir.ui.view">
+            <field name="name">purchase.order.filter.inherit.ip_number</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="ip_number" string="Nº IP"/>
+                </xpath>
+                <xpath expr="//separator[1]" position="before">
+                    <filter name="ip_number_filter" string="Nº IP" domain="[('ip_number', '!=', False)]"/>
+                </xpath>
+            </field>
+        </record>
 </odoo>

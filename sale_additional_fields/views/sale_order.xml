@@ -8,8 +8,12 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <field name="sale_order_template_id" position="after">
+<!--                'default_supplier_id': supplier_id}-->
                 <field name="supplier_id" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"/>
-                <field name="licence_car_id" domain="[('partner_id', '=', partner_id)]"/>
+                <field name="supplier_id_int" invisible="True"/>
+                <field name="licence_car_id" domain="[('partner_id', '=', supplier_id)]"
+                context="{'default_partner_id': supplier_id_int}"/>
+<!--                       context="{'default_supplier_id: supplier_id}"/>-->
                 <field name="ip_number"/>
                 <field name="is_purchase_order_created" invisible="True"/>
             </field>

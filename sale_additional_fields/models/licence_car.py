@@ -21,4 +21,24 @@ class LicenceCar(models.Model):
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Partner",
+        required=True,
     )
+    active = fields.Boolean(default=True)
+
+    @api.model
+    def create(self, vals):
+        print("*" * 50)
+        record = super(LicenceCar, self).create(vals)
+        print("*" * 80)
+        print(vals)
+        if 'partner_id' in vals:
+            print("*"*50)
+            print(vals)
+            partner = self.env['res.partner'].browse(vals['partner_id'])
+            partner.licence_car_ids = [(4, record.id)]
+        return record
+
+
+
+
+

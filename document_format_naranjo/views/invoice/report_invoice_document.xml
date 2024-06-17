@@ -20,7 +20,8 @@
                 </td>
             </xpath>
             <xpath expr="//div[@class='clearfix']" position="after">
-                <t t-if="o.move_type == 'out_invoice'">
+<!--                <t t-if="o.move_type == 'out_invoice'" >-->
+                <t t-if="o.move_type == 'out_invoice' and not o.partner_bank_id">
                     <strong>Cuenta bancaria:</strong>
                     <span>ES50 0128 0702 6601 0003 8906</span>
                 </t>

@@ -11,12 +11,18 @@
                 <th name="ip_number" class="text-center">
                     <strong>Numero IP</strong>
                 </th>
+                <th name="service_date" class="text-center">
+                    <strong>Fecha Servicio</strong>
+                </th>
             </xpath>
             <xpath
                 expr="//div[@class='page']/table/tbody/t[@t-foreach='lines']/tr/t[@t-if='not line.display_type']/td/span[@t-field='line.quantity']"
                 position="after">
                 <td class="text-center">
                     <span t-field="line.ip_number"></span>
+                </td>
+                <td class="text-center">
+                    <span t-field="line.date_approve"></span>
                 </td>
             </xpath>
             <xpath expr="//div[@class='clearfix']" position="after">

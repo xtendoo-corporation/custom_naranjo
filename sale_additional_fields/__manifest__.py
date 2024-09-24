@@ -20,6 +20,7 @@
         "views/purchase_order_views.xml",
         "views/res_partner_view.xml",
         "views/licence_car_view.xml",
+        "views/purchase_view_kpis_tree.xml",
     ],
     "application": True,
     "installable": True,

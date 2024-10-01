@@ -8,12 +8,12 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <field name="sale_order_template_id" position="after">
-<!--                'default_supplier_id': supplier_id}-->
+                <!--                'default_supplier_id': supplier_id}-->
                 <field name="supplier_id" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"/>
                 <field name="supplier_id_int" invisible="True"/>
                 <field name="licence_car_id" domain="[('partner_id', '=', supplier_id)]"
-                context="{'default_partner_id': supplier_id_int}"/>
-<!--                       context="{'default_supplier_id: supplier_id}"/>-->
+                       context="{'default_partner_id': supplier_id_int}"/>
+                <!--                       context="{'default_supplier_id: supplier_id}"/>-->
                 <field name="ip_number"/>
                 <field name="is_purchase_order_created" invisible="True"/>
             </field>
@@ -23,6 +23,10 @@
                     Este pedido ya ha generado un
                     <b>pedido de compra.</b>
                 </div>
+            </xpath>
+            <xpath expr="//button[@name='action_draft']" position="replace">
+                <button name="action_draft" type="object" string="Convertir a presupuesto" data-hotkey="w"
+        attrs="{'invisible': ['|', ('state', 'not in', 'cancel'), ('invoice_count', '>', 0)]}"/>
             </xpath>
             <field name="date_order" position="after">
                 <field name="upload_date"/>

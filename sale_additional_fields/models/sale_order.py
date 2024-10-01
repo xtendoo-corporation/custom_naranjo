@@ -3,6 +3,7 @@
 import datetime
 
 from odoo import _, api, fields, models
+from odoo.exceptions import AccessError, UserError, ValidationError
 
 
 class SaleOrder(models.Model):
@@ -127,3 +128,13 @@ class SaleOrder(models.Model):
     def _compute_supplier_id_int(self):
         for record in self:
             record.supplier_id_int = record.supplier_id.id
+
+    @api.ondelete(at_uninstall=False)
+    def _unlink_except_draft_or_cancel(self):
+        for order in self:
+            if order.invoice_count > 0:
+                raise UserError(_('No puede eliminar un pedido de ventas que tenga facturas asociadas..'))
+
+            if order.state not in ('draft', 'cancel'):
+                raise UserError(
+                    _('No puede eliminar un presupuesto enviado o un pedido confirmado.'))

@@ -19,7 +19,7 @@ class SaleOrder(models.Model):
     )
     ip_number = fields.Char(
         string="Nº IP",
-        required=False,
+        required=True,
         allow_none=False,
     )
     upload_date = fields.Date(

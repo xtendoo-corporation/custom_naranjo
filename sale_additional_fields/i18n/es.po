@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-02 07:49+0000\n"
-"PO-Revision-Date: 2022-11-02 07:49+0000\n"
+"POT-Creation-Date: 2024-10-10 06:35+0000\n"
+"PO-Revision-Date: 2024-10-10 06:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_needaction
 msgid "Action Needed"
 msgstr "Acción necesaria"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__active
+msgid "Active"
+msgstr "Activa"
 
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_ids
@@ -41,6 +46,17 @@ msgid "Activity Type Icon"
 msgstr "Icono de tipo de actividad"
 
 #. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.my_sales_order_view_extend
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.view_purchase_order_filter_inherit_ip_number
+msgid "Agrupaciones"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.licence_car_view_search
+msgid "Archivadas"
+msgstr ""
+
+#. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_attachment_count
 msgid "Attachment Count"
 msgstr "Recuento de archivos adjuntos"
@@ -49,6 +65,11 @@ msgstr "Recuento de archivos adjuntos"
 #: model:ir.model,name:sale_additional_fields.model_res_partner
 msgid "Contact"
 msgstr "Contacto"
+
+#. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.view_order_form
+msgid "Convertir a presupuesto"
+msgstr ""
 
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__create_uid
@@ -66,8 +87,22 @@ msgid "Display Name"
 msgstr "Nombre"
 
 #. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.my_sales_order_view_extend
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.purchase_order_view_search_inherit
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.view_purchase_order_filter_inherit_ip_number
+msgid "Download Date"
+msgstr "Fecha de descarga"
+
+#. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.sale_order_view_search_inherit_sale
+msgid "Download date"
+msgstr "Fecha de descarga"
+
+#. module: sale_additional_fields
 #: model_terms:ir.ui.view,arch_db:sale_additional_fields.view_order_form
-msgid "Este pedido ya ha generado un <b>pedido de compra.</b>"
+msgid ""
+"Este pedido ya ha generado un\n"
+"                    <b>pedido de compra.</b>"
 msgstr ""
 
 #. module: sale_additional_fields
@@ -76,16 +111,22 @@ msgid "Expiration date"
 msgstr "Fecha de caducidad"
 
 #. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_account_move_line__date_approve
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.account_move_view_form
+msgid "Fecha Servicio"
+msgstr ""
+
+#. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_purchase_order__upload_date
 #: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__upload_date
 msgid "Fecha de carga"
-msgstr "Fecha de carga"
+msgstr ""
 
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_purchase_order__download_date
 #: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__download_date
 msgid "Fecha de descarga"
-msgstr "Fecha de descarga"
+msgstr ""
 
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_follower_ids
@@ -110,7 +151,21 @@ msgstr "Tiene mensaje"
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.my_sales_order_view_extend
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.purchase_order_view_search_inherit
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.sale_order_search_inherit_sale
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.sale_order_view_search_inherit_sale
+msgid "IP Number"
+msgstr "Número IP"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_account_move_line__ip_number
+#: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order_line__ip_number
+msgid "IP number"
+msgstr "Número IP"
 
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_exception_icon
@@ -144,9 +199,14 @@ msgid "Is Purchase Order Created"
 msgstr "Se crea la orden de compra"
 
 #. module: sale_additional_fields
+#: model:ir.model,name:sale_additional_fields.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modificación"
 
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__write_uid
@@ -169,12 +229,25 @@ msgstr "Matrícula"
 
 #. module: sale_additional_fields
 #: model:ir.model,name:sale_additional_fields.model_licence_car
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.licence_car_view_search
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.purchase_order_view_search_inherit
 msgid "Licence Car"
 msgstr "Matrícula"
 
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__name
 msgid "Licence car"
+msgstr "Matrícula"
+
+#. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.my_sales_order_view_extend
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.view_purchase_order_filter_inherit_ip_number
+msgid "Licence car ID"
+msgstr "Matrícula"
+
+#. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.sale_order_view_search_inherit_sale
+msgid "Licence car id"
 msgstr "Matrícula"
 
 #. module: sale_additional_fields
@@ -204,6 +277,11 @@ msgid "My Activity Deadline"
 msgstr ""
 
 #. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr "Fecha límite de la próxima actividad"
@@ -216,6 +294,23 @@ msgstr "Resumen de la siguiente actividad"
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_type_id
 msgid "Next Activity Type"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.licence_car_view_search
+msgid "No Archivadas"
+msgstr ""
+
+#. module: sale_additional_fields
+#: code:addons/sale_additional_fields/models/sale_order.py:0
+#, python-format
+msgid "No puede eliminar un pedido de ventas que tenga facturas asociadas.."
+msgstr ""
+
+#. module: sale_additional_fields
+#: code:addons/sale_additional_fields/models/sale_order.py:0
+#, python-format
+msgid "No puede eliminar un presupuesto enviado o un pedido confirmado."
 msgstr ""
 
 #. module: sale_additional_fields
@@ -246,18 +341,20 @@ msgstr ""
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_purchase_order__ip_number
 #: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__ip_number
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.my_sales_order_view_extend
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.view_purchase_order_filter_inherit_ip_number
 msgid "Nº IP"
-msgstr "Nº IP"
+msgstr ""
 
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__partner_id
 msgid "Partner"
-msgstr "Partner"
+msgstr ""
 
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__supplier_id
 msgid "Proveedor"
-msgstr "Proveedor"
+msgstr ""
 
 #. module: sale_additional_fields
 #: model:ir.model,name:sale_additional_fields.model_purchase_order
@@ -275,12 +372,22 @@ msgid "Sales Order"
 msgstr "Pedido de venta"
 
 #. module: sale_additional_fields
+#: model:ir.model,name:sale_additional_fields.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: sale_additional_fields
 #: model:ir.model.fields,help:sale_additional_fields.field_licence_car__activity_state
 msgid ""
 "Status based on activities\n"
 "Overdue: Due date is already passed\n"
 "Today: Activity date is today\n"
 "Planned: Future activities."
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__supplier_id_int
+msgid "Supplier ID"
 msgstr ""
 
 #. module: sale_additional_fields
@@ -297,6 +404,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr ""
+
+#. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.my_sales_order_view_extend
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.purchase_order_view_search_inherit
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.view_purchase_order_filter_inherit_ip_number
+msgid "Upload Date"
+msgstr "Fecha de carga"
+
+#. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.sale_order_view_search_inherit_sale
+msgid "Upload date"
+msgstr "Fecha de carga"
 
 #. module: sale_additional_fields
 #: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__website_message_ids

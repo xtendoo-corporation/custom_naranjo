@@ -44,11 +44,15 @@
                 <field name="ip_number" optional="hide"/>
             </xpath>
             <xpath expr="//field[@name='ip_number']" position="after">
+                <field name="licence_car_id" invisible="0"/>
+            </xpath>
+            <xpath expr="//field[@name='licence_car_id']" position="after">
                 <field name="upload_date" invisible="0"/>
             </xpath>
             <xpath expr="//field[@name='upload_date']" position="after">
                 <field name="download_date" invisible="0"/>
             </xpath>
+
         </field>
     </record>
 
@@ -61,6 +65,9 @@
                 <field name="ip_number" optional="hide"/>
             </xpath>
             <xpath expr="//field[@name='ip_number']" position="after">
+                <field name="licence_car_id" invisible="0"/>
+            </xpath>
+            <xpath expr="//field[@name='licence_car_id']" position="after">
                 <field name="upload_date" invisible="0"/>
             </xpath>
             <xpath expr="//field[@name='upload_date']" position="after">
@@ -78,6 +85,12 @@
             <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
                 <separator/>
                 <filter string="IP Number" name="ip_number"/>
+                 <separator/>
+                <filter string="Licence car id" name="licence_car_id"/>
+                 <separator/>
+                <filter string="Upload date" name="upload_date"/>
+                 <separator/>
+                <filter string="Download date" name="download_date"/>
             </xpath>
         </field>
     </record>
@@ -101,9 +114,22 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_sales_order_filter"/>
         <field name="arch" type="xml">
+             <xpath expr="//search" position="inside">
+                <field name="ip_number" string="Nº IP"/>
+                <separator string="Agrupaciones"/>
+                <filter name="group_by_ip_number" string="Nº IP" domain="[]"
+                        context="{'group_by': 'ip_number'}"/>
+                <filter name="group_by_licence_car_id" string="Licence car ID" domain="[]"
+                        context="{'group_by': 'licence_car_id'}"/>
+                <filter name="group_by_upload_date" string="Download Date" domain="[]"
+                        context="{'group_by': 'upload_date'}"/>
+                <filter name="group_by_download_date" string="Upload Date" domain="[]"
+                        context="{'group_by': 'download_date'}"/>
+            </xpath>
             <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
                 <separator/>
                 <filter string="IP Number" name="ip_number" domain="[('ip_number','!=',False)]"/>
+                <filter string="Licence car ID" name="licence_car_id" domain="[('licence_car_id','!=',False)]"/>
                 <filter string="Download Date" name="download_date" date="download_date"/>
                 <filter string="Upload Date" name="upload_date" date="upload_date"/>
             </xpath>
@@ -117,6 +143,9 @@
         <field name="arch" type="xml">
             <xpath expr="//search" position="inside">
                 <field name="ip_number" string="IP Number"/>
+                <field name="licence_car_id" domain="[('partner_id', '=', partner_id)]"/>
+                <field name="upload_date"/>
+                <field name="download_date"/>
             </xpath>
         </field>
     </record>

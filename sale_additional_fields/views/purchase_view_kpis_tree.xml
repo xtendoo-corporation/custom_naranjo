@@ -7,7 +7,9 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="ip_number"/>
-                <field name="date_approve"/>
+                <field name="licence_car_id" domain="[('partner_id', '=', partner_id)]"/>
+                <field name="upload_date"/>
+                <field name="download_date"/>
             </xpath>
         </field>
     </record>
@@ -19,7 +21,32 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_approve']" position="before">
                 <field name="ip_number"/>
+                <field name="licence_car_id" domain="[('partner_id', '=', partner_id)]"/>
+                <field name="upload_date"/>
+                <field name="download_date"/>
             </xpath>
         </field>
     </record>
+
+    <record id="purchase_order_view_search_inherit" model="ir.ui.view">
+    <field name="name">purchase.order.view.search.inherit</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_view_search"/>
+    <field name="arch" type="xml">
+        <xpath expr="//filter[@name='order_date']" position="after">
+            <separator/>
+            <filter name="ip_number_filter" string="IP Number" domain="[('ip_number', '!=', False)]"/>
+            <filter name="licence_car_id_filter" string="Licence Car" domain="[('licence_car_id', '!=', False)]"/>
+            <filter name="upload_date_filter" string="Upload Date" date="upload_date"/>
+            <filter name="download_date_filter" string="Download Date" date="download_date"/>
+        </xpath>
+
+        <xpath expr="//group" position="inside">
+            <filter string="IP Number" name="group_ip_number" domain="[]" context="{'group_by': 'ip_number'}"/>
+            <filter string="Licence Car" name="group_licence_car_id" domain="[]" context="{'group_by': 'licence_car_id'}"/>
+            <filter string="Upload Date" name="group_upload_date" domain="[]" context="{'group_by': 'upload_date'}"/>
+            <filter string="Download Date" name="group_download_date" domain="[]" context="{'group_by': 'download_date'}"/>
+        </xpath>
+    </field>
+</record>
 </odoo>

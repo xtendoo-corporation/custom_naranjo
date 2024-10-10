@@ -8,13 +8,14 @@
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
             <field name="currency_id" position="after">
-                <field name="licence_car_id" domain="[('partner_id', '=', partner_id)]"/>
                 <field name="ip_number"/>
+                <field name="licence_car_id" domain="[('partner_id', '=', partner_id)]"/>
                 <field name="upload_date"/>
                 <field name="download_date"/>
             </field>
         </field>
     </record>
+
 
     <record id="view_purchase_order_filter_inherit_ip_number" model="ir.ui.view">
         <field name="name">purchase.order.filter.inherit.ip_number</field>
@@ -26,9 +27,18 @@
                 <separator string="Agrupaciones"/>
                 <filter name="group_by_ip_number" string="Nº IP" domain="[]"
                         context="{'group_by': 'ip_number'}"/>
+                <filter name="group_by_licence_car_id" string="Licence car ID" domain="[]"
+                        context="{'group_by': 'licence_car_id'}"/>
+                <filter name="group_by_upload_date" string="Download Date" domain="[]"
+                        context="{'group_by': 'upload_date'}"/>
+                <filter name="group_by_download_date" string="Upload Date" domain="[]"
+                        context="{'group_by': 'download_date'}"/>
             </xpath>
             <xpath expr="//separator[1]" position="before">
                 <filter name="ip_number_filter" string="Nº IP" domain="[('ip_number', '!=', False)]"/>
+                <filter name="licence_car_id" string="Licence car ID" domain="[('licence_car_id', '!=', False)]"/>
+                <filter name="upload_date" string="Download Date" domain="[('upload_date', '!=', False)]"/>
+                <filter name="download_date" string="Upload Date" domain="[('download_date', '!=', False)]"/>
             </xpath>
         </field>
     </record>

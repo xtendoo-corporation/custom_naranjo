@@ -27,6 +27,10 @@ class AccountMoveLine(models.Model):
         string="Fecha Servicio",
         compute='_compute_date_approve',
     )
+    date_download = fields.Date(
+        string="Fecha Descarga",
+        compute='_compute_date_download',
+    )
 
     @api.depends('move_id.move_type', 'sale_line_ids.ip_number', 'purchase_order_id.ip_number')
     def _compute_ip_number(self):
@@ -49,3 +53,11 @@ class AccountMoveLine(models.Model):
             if record.move_id.move_type in ["in_invoice", "in_refund"]:
                 for line in record.filtered("purchase_order_id"):
                     record.date_approve = line.purchase_order_id.date_approve
+
+    @api.depends('move_id.move_type', 'purchase_order_id.download_date')
+    def _compute_date_download(self):
+        for record in self:
+            record.date_download = False
+            if record.move_id.move_type in ["in_invoice", "in_refund"]:
+                for line in record.filtered("purchase_order_id"):
+                    record.date_download = line.purchase_order_id.download_date

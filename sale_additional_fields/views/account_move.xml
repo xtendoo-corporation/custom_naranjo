@@ -10,11 +10,13 @@
             <xpath expr="//field[@name='invoice_line_ids']//form//field[@name='name']" position="after">
                 <field name="ip_number"/>
                 <field name="date_approve" string="Fecha Servicio"/>
+                <field name="date_download" string="Fecha Descarga"/>
                 <field name="sale_line_ids" widget="many2many_tags"/>
             </xpath>
             <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='name']" position="after">
                 <field name="ip_number" optional="hide"/>
                 <field name="date_approve" string="Fecha Servicio"/>
+                <field name="date_download" string="Fecha Descarga"/>
                 <field name="sale_line_ids" widget="many2many_tags" optional="hide"/>
             </xpath>
         </field>

@@ -2,6 +2,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
+from odoo.auto.addons.account_move_exception.init_hook import store_exception_fields
+from odoo.custom.src.odoo.odoo.service.server import start
 
 
 class AccountMoveLine(models.Model):
@@ -14,10 +16,12 @@ class AccountMoveLine(models.Model):
     date_approve = fields.Date(
         string="Fecha Servicio",
         compute='_compute_date_approve',
+        store=True,
     )
     date_download = fields.Date(
         string="Fecha Descarga",
         compute='_compute_date_download',
+        store=True,
     )
 
     @api.depends('move_id.move_type', 'sale_line_ids.ip_number', 'purchase_order_id.ip_number')

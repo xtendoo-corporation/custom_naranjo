@@ -8,11 +8,11 @@
             <xpath expr="//div[@id='informations']/div[@name='origin']" position="replace"/>
             <xpath expr="//th[@name='th_quantity']"
                    position="after">
+                  <th name="licence_car" class="text-center">
+                    <strong>Matrícula</strong>
+                </th>
                 <th name="ip_number" class="text-center">
                     <strong>Numero IP</strong>
-                </th>
-                <th name="service_date" class="text-center">
-                    <strong>Fecha Servicio</strong>
                 </th>
                 <th name="download_date" class="text-center">
                     <strong>Fecha Descarga</strong>
@@ -22,17 +22,29 @@
                 expr="//div[@class='page']/table/tbody/t[@t-foreach='lines']/tr/t[@t-if='not line.display_type']/td/span[@t-field='line.quantity']"
                 position="after">
                 <td class="text-center">
-                    <span t-field="line.ip_number"></span>
+                    <span t-field="line.licence_car_id.name"/>
                 </td>
                 <td class="text-center">
-                    <span t-field="line.date_approve"></span>
+                    <span t-field="line.ip_number"/>
                 </td>
                 <td class="text-center">
-                    <span t-field="line.date_download"></span>
+                    <span t-field="line.date_download"/>
                 </td>
             </xpath>
+            <xpath expr="//th[@name='th_priceunit']" position="replace">
+            </xpath>
+            <xpath expr="//th[@name='th_taxes']" position="replace">
+            </xpath>
+            <xpath
+                expr="//td[@class='text-center']/span[@t-field='line.date_download']/ancestor::td/following-sibling::td[1]"
+                position="replace">
+            </xpath>
+            <xpath
+                expr="//td[@class='text-center']/span[@t-field='line.date_download']/ancestor::td/following-sibling::td[2]"
+                position="replace">
+            </xpath>
             <xpath expr="//div[@class='clearfix']" position="after">
-<!--                <t t-if="o.move_type == 'out_invoice'" >-->
+                <!--                <t t-if="o.move_type == 'out_invoice'" >-->
                 <t t-if="o.move_type == 'out_invoice' and not o.partner_bank_id">
                     <strong>Cuenta bancaria:</strong>
                     <span>ES50 0128 0702 6601 0003 8906</span>

@@ -22,6 +22,26 @@ class AccountMoveLine(models.Model):
         store=True,
     )
 
+    licence_car_id = fields.Many2one(
+        comodel_name='licence.car',
+        string='Licence',
+        compute='_compute_licence_car_id',
+        store=True,
+    )
+
+    @api.depends('move_id.move_type', 'sale_line_ids.order_id.licence_car_id', 'purchase_order_id.licence_car_id')
+    def _compute_licence_car_id(self):
+        for record in self:
+            record.licence_car_id = False
+            if record.move_id.move_type in ["out_invoice", "out_refund"]:
+                for line in record.sale_line_ids:
+                    if line.order_id.licence_car_id:
+                        record.licence_car_id = line.order_id.licence_car_id
+                        break
+            elif record.move_id.move_type in ["in_invoice", "in_refund"]:
+                if record.purchase_order_id.licence_car_id:
+                    record.licence_car_id = record.purchase_order_id.licence_car_id
+
     @api.depends('move_id.move_type', 'sale_line_ids.ip_number', 'purchase_order_id.ip_number')
     def _compute_ip_number(self):
         for record in self:

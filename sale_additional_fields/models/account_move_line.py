@@ -67,7 +67,7 @@ class AccountMoveLine(models.Model):
             elif record.move_id.move_type in ["out_invoice", "out_refund"]:
                 # Para facturas de venta
                 if record.sale_line_ids:
-                    record.date_download = record.sale_line_ids[0].order_id.date_order
+                    record.date_approve = record.sale_line_ids[0].order_id.upload_date
 
                 # if record.move_id.invoice_origin:
                 #     sale_order = self.env['sale.order'].search(

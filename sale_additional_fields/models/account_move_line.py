@@ -21,7 +21,6 @@ class AccountMoveLine(models.Model):
         compute='_compute_date_download',
         store=True,
     )
-
     licence_car_id = fields.Many2one(
         comodel_name='licence.car',
         string='Licence',
@@ -66,13 +65,15 @@ class AccountMoveLine(models.Model):
                     record.date_approve = record.purchase_order_id.date_approve
             elif record.move_id.move_type in ["out_invoice", "out_refund"]:
                 # Para facturas de venta
-                if record.move_id.invoice_origin:
-                    # Buscar la orden de venta basada en invoice_origin
-                    sale_order = self.env['sale.order'].search(
-                        [('name', '=', record.move_id.invoice_origin)], limit=1
-                    )
-                    if sale_order:
-                        record.date_approve = sale_order.date_order
+                if record.sale_line_ids:
+                    record.date_download = record.sale_line_ids[0].order_id.date_order
+
+                # if record.move_id.invoice_origin:
+                #     sale_order = self.env['sale.order'].search(
+                #         [('name', '=', record.move_id.invoice_origin)], limit=1
+                #     )
+                #     if sale_order:
+                #         record.date_approve = sale_order.date_order
 
     @api.depends('move_id.move_type', 'purchase_order_id.download_date', 'move_id.invoice_origin')
     def _compute_date_download(self):
@@ -82,9 +83,12 @@ class AccountMoveLine(models.Model):
                 for line in record.filtered("purchase_order_id"):
                     record.date_download = line.purchase_order_id.download_date
             elif record.move_id.move_type in ["out_invoice", "out_refund"]:
-                if record.move_id.invoice_origin:
-                    sale_order = self.env['sale.order'].search(
-                        [('name', '=', record.move_id.invoice_origin)], limit=1
-                    )
-                    if sale_order:
-                        record.date_download = sale_order.download_date
+                if record.sale_line_ids:
+                    record.date_download = record.sale_line_ids[0].order_id.download_date
+
+                # if record.move_id.invoice_origin:
+                #     sale_order = self.env['sale.order'].search(
+                #         [('name', '=', record.move_id.invoice_origin)], limit=1
+                #     )
+                #     if sale_order:
+                #         record.date_download = sale_order.download_date

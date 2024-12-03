@@ -11,6 +11,14 @@ class SaleOrderLine(models.Model):
         string='IP number',
         compute="_compute_ip_number",
     )
+    download_date = fields.Date(
+        string='Download Date',
+        related='order_id.download_date',
+    )
+    upload_date = fields.Date(
+        string='Upload Date',
+        related='order_id.upload_date',
+    )
 
     @api.depends("order_id.ip_number")
     def _compute_ip_number(self):

@@ -55,8 +55,9 @@ class AccountMoveLine(models.Model):
                 for line in record.filtered("purchase_order_id"):
                     record.ip_number = line.purchase_order_id.ip_number
 
-    @api.depends('move_id.move_type', 'purchase_order_id.date_approve', 'move_id.invoice_origin')
+    @api.depends('move_id.move_type', 'move_id.invoice_date', 'purchase_order_id.date_approve', 'move_id.invoice_origin')
     def _compute_date_approve(self):
+        print("compute_date_approve------------------------------------")
         for record in self:
             record.date_approve = False
             if record.move_id.move_type in ["in_invoice", "in_refund"]:
@@ -75,8 +76,9 @@ class AccountMoveLine(models.Model):
                 #     if sale_order:
                 #         record.date_approve = sale_order.date_order
 
-    @api.depends('move_id.move_type', 'purchase_order_id.download_date', 'move_id.invoice_origin')
+    @api.depends('move_id.move_type', 'move_id.invoice_date', 'purchase_order_id.download_date', 'move_id.invoice_origin')
     def _compute_date_download(self):
+        print("compute_date_download------------------------------------")
         for record in self:
             record.date_download = False
             if record.move_id.move_type in ["in_invoice", "in_refund"]:

@@ -23,23 +23,39 @@
             <xpath
                 expr="//th[@name='th_price_unit']"
                 position="after">
-                <th name="download_date" class="text-center">
-                    <strong>Fecha de descarga</strong>
-                </th>
                 <th name="upload_date" class="text-center">
-                    <strong>Fecha de carga</strong>
+                    <strong>Carga</strong>
                 </th>
+                <th name="download_date" class="text-center">
+                    <strong>Descarga</strong>
+                </th>
+
             </xpath>
             <xpath
                 expr="//div[@class='page']/table/tbody/t[@t-foreach='o.order_line']/tr/t[@t-if='not line.display_type']/td[5]"
                 position="after">
                 <td>
-                    <span t-field="o.download_date"></span>
-                </td>
-                <td>
                     <span t-field="o.upload_date"></span>
                 </td>
+                <td>
+                    <span t-field="o.download_date"></span>
+                </td>
             </xpath>
+
+            <xpath
+                expr="//th[@name='th_price_unit']"
+                position="replace"/>
+
+             <xpath
+                expr="//div[@class='page']/table/tbody/t[@t-foreach='o.order_line']/tr/t[@t-if='not line.display_type']/td[5]"
+                position="replace"/>
+
+            <xpath
+                expr="//th[@name='th_amount']"
+                position="replace">
+                <th name="th_amount" class="text-right"><strong>Total</strong></th>
+            </xpath>
+
             <xpath expr="//th[@name='th_date_req']" position="replace"
             />
             <xpath expr="//td[3]" position="replace"/>
@@ -133,6 +149,11 @@
                                     <span t-esc="', '.join(map(lambda x: x.description, line.taxes_id))"/>
                                 </td>
             </xpath>
+
+            <xpath
+                expr="//th[@name='th_taxes']" position="replace"/>
+            <xpath
+                expr="//td[@name='td_taxes']" position="replace"/>
         </template>
     </data>
 </odoo>

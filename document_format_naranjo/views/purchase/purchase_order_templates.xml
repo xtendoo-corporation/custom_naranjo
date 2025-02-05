@@ -154,6 +154,15 @@
                 expr="//th[@name='th_taxes']" position="replace"/>
             <xpath
                 expr="//td[@name='td_taxes']" position="replace"/>
+
+            <xpath expr="//th[@name='th_quantity']" position="replace">
+                <th name="th_license_car" class="text-center"><strong>Matricula</strong></th>
+            </xpath>
+            <xpath expr="//td[2]" position="replace">
+                <td class="text-left">
+                    <span t-field="o.licence_car_id"/>
+                </td>
+            </xpath>
         </template>
     </data>
 </odoo>
